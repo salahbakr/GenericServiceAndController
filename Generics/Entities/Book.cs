@@ -2,7 +2,9 @@
 {
     public class Book : BaseEntity
     {
-        public string Name { get; set; }
-        public string Author { get; set; }
+        public required string Name { get; set; }
+
+        public int AuthorId { get; set; }
+        public virtual Author? Author { get; set; }
     }
 }

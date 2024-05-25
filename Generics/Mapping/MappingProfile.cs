@@ -10,6 +10,9 @@ namespace Generics.Mapping
         {
             CreateMap<BookCreateDto, Book>();
             CreateMap<Book, BookResponseDto>();
+
+            CreateMap<AuthorCreateDto, Author>();
+            CreateMap<Author, AuthorResponseDto>();
         }
     }
 }

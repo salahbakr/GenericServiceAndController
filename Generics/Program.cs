@@ -1,16 +1,23 @@
 
 using Generics.ExtensionMethods;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddApplicationServices();
+builder.Services.AddControllers()
+    .AddMvcOptions(o => o.Conventions.Add(
+            new GenericControllerRouteConvention()
+        ))
+    .ConfigureApplicationPartManager(m =>
+            m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider()
+        ));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContextConnection(builder);
-builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 

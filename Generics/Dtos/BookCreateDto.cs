@@ -1,8 +1,11 @@
-﻿namespace Generics.Dtos
+﻿using Generics.Attributes;
+
+namespace Generics.Dtos
 {
+    [GenericControllerRoute("api/Books")]
     public class BookCreateDto : BaseCreateDto
     {
         public string Name { get; set; }
-        public string Author { get; set; }
+        public int AuthorId { get; set; }
     }
 }
